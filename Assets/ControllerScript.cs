@@ -3,7 +3,7 @@ using System.Collections;
 
 public class ControllerScript : MonoBehaviour {
 
-	float forwardSpeed = 30.0f;
+	float forwardSpeed = 0.5f;
 	float turnSpeed = 2.0f;
 
 	// Use this for initialization
@@ -16,8 +16,10 @@ public class ControllerScript : MonoBehaviour {
 		float turnAmount = Input.GetAxis ("Horizontal") * turnSpeed;
 		float forwarAmount = Input.GetAxis ("Vertical") * forwardSpeed;
 
-		transform.Rotate (0, turnAmount, 0);
+        //Debug.LogFormat("turnAmount = {0}", turnAmount);
 
-		GetComponent<Rigidbody>().AddRelativeForce (forwarAmount, 0, 0);
+		transform.Rotate (0, turnAmount, 0);
+        transform.Translate(forwarAmount, 0, 0);
+		//GetComponent<Rigidbody>().AddRelativeForce (forwarAmount, 0, 0);
 	}
 }
